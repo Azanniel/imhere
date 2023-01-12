@@ -23,8 +23,8 @@ export const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 36,
-    marginBottom: 42
+    marginTop: 34,
+    marginBottom: 44
   },
 
   input: {
@@ -52,8 +52,15 @@ export const styles = StyleSheet.create({
     fontSize: 24
   },
 
+  listTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FFF',
+    marginBottom: 28
+  },
+
   listEmptyText: {
-    color: '#888',
+    color: '#FDFCFE',
     fontSize: 14,
     textAlign: 'center'
   }

@@ -10,8 +10,12 @@ export function Home() {
   const [participantName, setParticipantName] = useState('');
 
   function handleParticipantAdd() {
-    const participantWithoutEmptySpaces = participantName.trim();
+    const isParticipantNameEmpty = !Boolean(participantName.trim());
+    if(isParticipantNameEmpty) {
+      return false;
+    }
 
+    const participantWithoutEmptySpaces = participantName.trim();
     if(participants.includes(participantWithoutEmptySpaces)) {
       return Alert.alert('Participante existe', 'Já existe um participante na lista com esse nome.');
     }
@@ -30,8 +34,6 @@ export function Home() {
           });
 
           setParticipants(participantsWithoutOneDeleted);
-
-          return Alert.alert("Deletado!");
         }
       },
       {
@@ -44,7 +46,7 @@ export function Home() {
   return (
     <View style={styles.container}>
       <Text style={styles.eventName}>
-        Nome do Evento
+        Evento Expo Go
       </Text>
 
       <Text style={styles.eventDate}>
@@ -58,6 +60,7 @@ export function Home() {
           placeholderTextColor="#6B6B6B"
           value={participantName}
           onChangeText={setParticipantName}
+          onSubmitEditing={handleParticipantAdd}
         />
 
         <TouchableOpacity
@@ -69,6 +72,10 @@ export function Home() {
           </Text>
         </TouchableOpacity>
       </View>
+
+      <Text style={styles.listTitle}>
+        Participantes
+      </Text>
 
       <FlatList
         data={participants}
